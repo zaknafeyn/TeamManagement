@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using TeamManager.DataAccess.Models;
 
 namespace TeamManager.DataAccess
@@ -7,42 +8,78 @@ namespace TeamManager.DataAccess
     {
         protected override void Seed(TeamManagerContext context)
         {
-            var country = new Country
+            var ukraine = new Country
             {
                 ID = 0,
                 Name = "Ukraine"
             };
-            context.Countries.Add(country);
-            context.SaveChanges();
+            context.Countries.Add(ukraine);
 
-            var city = new City
+            var kyiv = new City
             {
                 ID = 0,
                 Name = "Kyiv",
-                Country = country.ID
+                Country = ukraine.ID
             };
-            context.Cities.Add(city);
-            context.SaveChanges();
+            context.Cities.Add(kyiv);
 
-            var team = new Team
+            var teamId = 0;
+            var teams = new List<Team>
             {
-                ID = 0,
-                City = city.ID, 
-                TeamName = "Nova",
-                WebSite = "nova-ultimate.com"
+                new Team
+                {
+                    ID = teamId,
+                    City = kyiv.ID,
+                    TeamName = string.Format("Team {0}", teamId),
+                    WebSite = string.Format("Team{0}WebSite", teamId++)
+                },
+                new Team
+                {
+                    ID = teamId,
+                    City = kyiv.ID,
+                    TeamName = string.Format("Team {0}", teamId),
+                    WebSite = string.Format("Team{0}WebSite", teamId++)
+                },
+                new Team
+                {
+                    ID = teamId,
+                    City = kyiv.ID,
+                    TeamName = string.Format("Team {0}", teamId),
+                    WebSite = string.Format("Team{0}WebSite", teamId++)
+                }
             };
-            context.Teams.Add(team);
-            context.SaveChanges();
 
-            var player = new Player
+            var playerId = 0;
+            foreach (var team in teams)
             {
-                ID = 0,
-                FirstName = "First",
-                LastName = "Capitan",
-                TeamId = team.ID,
-                IsCapitan = true
-            };
-            context.Players.Add(player);
+                context.Teams.Add(team);
+
+                for (int i = 0; i < 5; i++)
+                {
+                    context.Players.Add(new Player
+                    {
+                        ID = playerId,
+                        FirstName = string.Format("FirstName{0}", playerId),
+                        LastName = string.Format("LastName{0}", playerId),
+                        TeamId = team.ID,
+                        IsCapitan = false
+                    });
+
+                    playerId++;
+                }
+                
+                // add capitan
+                context.Players.Add(new Player
+                {
+                    ID = playerId,
+                    FirstName = string.Format("CapFirstName{0}", playerId),
+                    LastName = string.Format("CapLastName{0}", playerId),
+                    TeamId = team.ID,
+                    IsCapitan = true
+                });
+
+                playerId++;
+            }
 
             context.SaveChanges();
             base.Seed(context);
