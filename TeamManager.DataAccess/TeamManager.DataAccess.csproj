@@ -30,6 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.1.5\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi">
+      <HintPath>..\packages\Autofac.WebApi.3.1.0\lib\net40\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -56,6 +65,7 @@
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Team.cs" />
+    <Compile Include="DataAccessModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TeamManagerContext.cs" />
     <Compile Include="TeamManagerDbConfiguration.cs" />

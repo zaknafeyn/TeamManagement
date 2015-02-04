@@ -10,18 +10,22 @@ using System.Web.Helpers;
 using System.Web.Http;
 using Antlr.Runtime;
 using Newtonsoft.Json;
+using TeamManager.Common;
 using TeamManager.DataAccess;
 using TeamManager.DataAccess.Models;
 
 namespace TeamManager.Controllers
 {
-    public class TeamsController : ApiController
+    public class TeamsController : BaseApiController<TeamManagerContext>
     {
-        TeamManagerContext context = new TeamManagerContext();
         // GET api/team
+        public TeamsController(TeamManagerContext ctx) : base(ctx)
+        {
+        }
+
         public string Get()
         {
-            var teams = context.Teams.Select(x => new {x.ID, x.TeamName, x.WebSite }).ToArray();
+            var teams = _ctx.Teams.Select(x => new {x.ID, x.TeamName, x.WebSite }).ToArray();
             if (teams.Length > 0)
             {
                 return JsonConvert.SerializeObject(teams);
@@ -33,7 +37,7 @@ namespace TeamManager.Controllers
         // GET api/team/5
         public string Get(int id)
         {
-            var team = context.Teams.SingleOrDefault(x => x.ID == id);
+            var team = _ctx.Teams.SingleOrDefault(x => x.ID == id);
 
             if (team == null)
                 return null;

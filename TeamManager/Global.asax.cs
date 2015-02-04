@@ -1,7 +1,11 @@
-﻿using System.Web.Http;
+﻿using System.Reflection;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Autofac;
+using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 using TeamManager.DataAccess;
 
 namespace TeamManager
@@ -20,9 +24,12 @@ namespace TeamManager
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            TeamManagerContext.Configure();
-           
-
+            var builder = new ContainerBuilder();
+            builder.RegisterModule<ControllersModule>();
+            builder.RegisterModule<DataAccessModule>();
+            var container = builder.Build();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
     }
 }
