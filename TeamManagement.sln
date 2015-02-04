@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManager.DataAccess", "TeamManager.DataAccess\TeamManager.DataAccess.csproj", "{5962DF7E-E54F-49E4-9503-3E856F154AC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManager", "TeamManager\TeamManager.csproj", "{4CD23E4E-8866-4945-BBF5-5A9EEA01AFC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5962DF7E-E54F-49E4-9503-3E856F154AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5962DF7E-E54F-49E4-9503-3E856F154AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5962DF7E-E54F-49E4-9503-3E856F154AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5962DF7E-E54F-49E4-9503-3E856F154AC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CD23E4E-8866-4945-BBF5-5A9EEA01AFC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CD23E4E-8866-4945-BBF5-5A9EEA01AFC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CD23E4E-8866-4945-BBF5-5A9EEA01AFC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CD23E4E-8866-4945-BBF5-5A9EEA01AFC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
