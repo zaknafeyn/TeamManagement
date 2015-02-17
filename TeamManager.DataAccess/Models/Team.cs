@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
 
 namespace TeamManager.DataAccess.Models
@@ -15,5 +16,8 @@ namespace TeamManager.DataAccess.Models
         public string WebSite { get; set; }
 
         public virtual ICollection<Player> Players { get; set; }
+        public virtual ICollection<Game> HomeGames { get; set; }
+        public virtual ICollection<Game> GuestGames { get; set; }
+		public virtual ICollection<Point> Points { get; set; }
     }
 }
